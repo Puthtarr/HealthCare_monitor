@@ -72,7 +72,7 @@ for i in range(1, NUM_PEOPLE + 1):
         "province": "สุรินทร์"
     })
 
-    # ✅ generate health info
+    # generate health info
     height = round(random.uniform(150, 180), 1)
     weight = round(random.uniform(45, 90), 1)
     bmi = round(weight / ((height / 100) ** 2), 1)
@@ -103,7 +103,7 @@ for i in range(1, NUM_PEOPLE + 1):
         "check_date": str(check_date.date())
     })
 
-    # ✅ เขียนออกเป็น batch เพื่อลดหน่วยความจำ
+    # batch
     if i % BATCH_SIZE == 0 or i == NUM_PEOPLE:
         part = i // BATCH_SIZE
         person_path = f"output_json/person_part_{part}.json"
@@ -115,10 +115,10 @@ for i in range(1, NUM_PEOPLE + 1):
         with open(health_path, "w", encoding="utf-8") as f:
             json.dump(health_records, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ Saved batch {part} ({i:,} records)")
+        print(f"Saved batch {part} ({i:,} records)")
 
         person_records.clear()
         health_records.clear()
         fake = Faker("th_TH")  # reset Faker protect memory leak
 
-print("🎉 Done! Generated 100,000 mock records in JSON format.")
+print("Done! Generated 100,000 mock records in JSON format.")
